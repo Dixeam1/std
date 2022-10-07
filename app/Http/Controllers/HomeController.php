@@ -24,7 +24,8 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $data = [];
-        $data['students'] = student::all();
+        $data['students'] = student::paginate(8);  
+
         if($request->search){
             $data['students'] = student::where('name', 'LIKE', '%' . $request->search . '%')->orWhere('rollno', 'LIKE', '%' . $request->search . '%')->orWhere('class', 'LIKE', '%' . $request->search . '%')->get();
         }

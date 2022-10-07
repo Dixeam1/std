@@ -25,4 +25,6 @@ Route::post('/submit', 'studentController@store');
 Route::get('delete/{id}', 'studentController@destroy');
 Route::get('edit/{id}', 'studentController@edit');
 Route::post('update/{id}', 'studentController@update');
+Route::get('view/{id}', 'studentController@view');
+
 
