@@ -45,7 +45,7 @@
             <td>
                 <a class="btn btn-danger" href="delete/{{$student->id}}">Delete</a>
                 <a class="ml-4 btn btn-primary" href="edit/{{$student->id}}">Edit</a>
-                <a class="ml-4 btn btn-primary" href="view/{{$student->id}}">View</a>
+                <a class="ml-4 btn btn-success" href="view/{{$student->id}}">View</a>
             </td>
 
         </tr>
@@ -54,8 +54,7 @@
     </tbody>
 </table>
 <div class="row display flex justify-content-center fixed-bottom">
-    
-{{$students}}
+    <input type="hidden" value="{{$students}}">
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
