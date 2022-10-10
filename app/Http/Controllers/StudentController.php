@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\student;
 use Illuminate\Http\Request;
-
+use Storage;
 class StudentController extends Controller
 {
     /**
@@ -42,15 +42,10 @@ class StudentController extends Controller
         $res->rollno = $request->input('rollno');
         $res->class = $request->input('class');
         $res->phone = $request->input('phone');
-        if($request->hasfile('file'))
-        {
-
+        if ($request->hasFile('file')) {
             $file = $request->file('file');
-            $extension =$file->getClientOriginalExtension();
-            $filename = time().'.'. $extension;
-            $file->move('public/upload/',$filename);
-            $res->images = $filename;
-
+            $filename = Storage::putFile("public/upload", $file);
+            $res->images = url('storage/app/'.$filename);
         }
         $res->save();
         return redirect('home');
@@ -92,20 +87,31 @@ class StudentController extends Controller
     public function update(Request $request, student $student, $id)
     {
         $res =student::find($request->id);
+
+        $destination="public/upload/".$res->images;
+        $data = $request->all();
         $res->name=$request->input('name');
         $res->rollno=$request->input('rollno');
         $res->class=$request->input('class');
         $res->phone=$request->input('phone');
-        if($request->hasfile('file'))
-        {
 
+
+        if ($request->hasFile('file')) {
             $file = $request->file('file');
-            $extension =$file->getClientOriginalExtension();
-            $filename = time().'.'. $extension;
-            $file->move('public/upload/',$filename);
-            $res->images = $filename;
-
+            $filename = Storage::putFile("public/upload", $file);
+            $res->images = url('storage/app/'.$filename);
         }
+
+        // if($request->hasfile('file')){
+        //     if(File::exists($destination)){
+        //         File::delete($destination);
+        //     }
+        //     $image=$request->productimage;
+        //     $imagename = time()."".$image->getClientOriginalName();
+        //     $req->images->move("public/upload/",$imagename);
+        //     $res->images = $imagename;
+        // }
+
         $res->save();
         $request->session()->flash('msg', 'Data Successfully updated!');
         return redirect("home"); 

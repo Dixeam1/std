@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-	<form method="post" action="../update/{{$students->id}}">
+	<form method="post" action="../update/{{$students->id}}" enctype="multipart/form-data">
 		@csrf
 		<div class="form-group">
 			<label for="formGroupExampleInput">Name</label>
@@ -22,7 +22,10 @@
 		</div>
 		<div class="form-group">
 			<label for="formGroupExampleInput2">Image</label>
-			<input type="file" class="form-control" name="file" id="formGroupExampleInput2" placeholder="" value="public/upload/{{$students->images}}">
+			<div>
+				<img src="{{ url('public/upload/'.@$students['images'])}}" alt="">
+			</div>
+			<input type="file" class="form-control" name="file" id="formGroupExampleInput2" placeholder="">
 		</div>
 		<div class="form-group">
 			<input type="submit" name="submit" class="btn btn-primary" id="formGroupExampleInput2">

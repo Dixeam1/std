@@ -18,13 +18,14 @@
         <?php 
         $i = 1;
         ?>
+        @if(@$students)
         @foreach($students as $student)
         <tr>
             <td>{{$i++}}</td>
             <td style="width: 100px;">
                 <div class="demo-item">
                     <button class="parent" type="button" class="btn" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">
-                        <img class="w-100" id="img_temp" src="{{ url('public/upload/'.$student['images'])}}">
+                        <img class="w-100" id="img_temp" src="{{ $student['images']}}">
                     </button>
                 </div>
 
@@ -50,23 +51,23 @@
 
         </tr>
         @endforeach
-
+        @endif
     </tbody>
 </table>
 <div class="row display flex justify-content-center fixed-bottom">
-    <input type="hidden" value="{{$students}}">
+    <input type="hidden" value="{{@$students}}">
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="name_popup">{{$student->name}}</h5>
+        <h5 class="modal-title" id="name_popup">{{@$student->name}}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
       </button>
   </div>
   <div class="modal-body">
-    <img class="w-100" id="img_popup" src="{{ url('public/upload/'.$student['images'])}}" alt="">
+    <img class="w-100" id="img_popup" src="{{ url('public/upload/'.@$student['images'])}}" alt="">
 </div>
 </div>
 </div>
