@@ -22,7 +22,7 @@
 		</div>
 		<div class="form-group">
 			<label for="formGroupExampleInput2">Image</label>
-			<input type="file" class="form-control" name="img" id="formGroupExampleInput2" placeholder="{{$students->name}}">
+			<input type="file" class="form-control" name="file" id="formGroupExampleInput2" placeholder="" value="public/upload/{{$students->images}}">
 		</div>
 		<div class="form-group">
 			<input type="submit" name="submit" class="btn btn-primary" id="formGroupExampleInput2">

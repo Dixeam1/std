@@ -42,7 +42,6 @@ class StudentController extends Controller
         $res->rollno = $request->input('rollno');
         $res->class = $request->input('class');
         $res->phone = $request->input('phone');
-        // dd($request->file('file'));
         if($request->hasfile('file'))
         {
 
@@ -97,6 +96,16 @@ class StudentController extends Controller
         $res->rollno=$request->input('rollno');
         $res->class=$request->input('class');
         $res->phone=$request->input('phone');
+        if($request->hasfile('file'))
+        {
+
+            $file = $request->file('file');
+            $extension =$file->getClientOriginalExtension();
+            $filename = time().'.'. $extension;
+            $file->move('public/upload/',$filename);
+            $res->images = $filename;
+
+        }
         $res->save();
         $request->session()->flash('msg', 'Data Successfully updated!');
         return redirect("home"); 
