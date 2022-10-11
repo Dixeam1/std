@@ -22,8 +22,8 @@
 		</div>
 		<div class="form-group">
 			<label for="formGroupExampleInput2">Image</label>
-			<div>
-				<img src="{{ url('public/upload/'.@$students['images'])}}" alt="">
+			<div class="mb-2" style="width: 85px;">
+				<img class="w-100" src="{{ url($students['images'])}}" alt="">
 			</div>
 			<input type="file" class="form-control" name="file" id="formGroupExampleInput2" placeholder="">
 		</div>

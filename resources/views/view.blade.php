@@ -4,7 +4,8 @@
 <div class="container">
 	<div class="row">
 		<div class="col-md-3">
-			<img class="w-100" src="{{ url('public/upload/'.$students['images'])}}" alt="">
+			<img class="w-100" id="img_temp" src="{{ $students['images']}}">
+
 		</div>
 		<div class="col-md-4">
 			<h4><span>Name: </span>{{$students->name}}</h4>
